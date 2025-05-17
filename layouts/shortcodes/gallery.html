@@ -1,0 +1,41 @@
+<div class="grid">
+  {{- range page.Params.gallery }}
+  <div>
+    <img src="{{ .thumb }}" class="hover-shadow galleryimage" data-id="{{ .id }}">
+  </div>
+  {{- end }}
+</div>
+
+<!-- The Modal/Lightbox -->
+<div id="myModal" class="modal">
+  <span class="close cursor">&times;</span>
+  <div class="modal-content">
+
+    {{- $page := page -}}
+    {{- range page.Params.gallery }}
+    <div class="mySlides">
+      <div class="numbertext">{{ .id }} / {{ len $page.Params.gallery }}</div>
+      <img src="{{ .image }}" class="mainimage">
+    </div>
+    {{- end }}
+
+    <!-- Next/previous controls -->
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail image controls -->
+    <div class="flex-strip">
+    {{- range page.Params.gallery }}
+    <div>
+      <img class="demo" src="{{ .thumb }}" data-id="{{ .id }}">
+    </div>
+    {{- end }}
+    </div>
+
+  </div>
+</div>

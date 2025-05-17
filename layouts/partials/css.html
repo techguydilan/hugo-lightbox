@@ -1,0 +1,8 @@
+{{- with resources.Get "css/main.css" }}
+{{- if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+{{- else }}
+{{- $fp := . | fingerprint -}}
+<link rel="stylesheet" href="{{ $fp.RelPermalink }}">
+{{- end }}
+{{- end }}
